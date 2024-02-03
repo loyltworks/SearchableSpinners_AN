@@ -14,6 +14,7 @@ import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
 import androidx.recyclerview.widget.RecyclerView;
@@ -42,6 +43,7 @@ public class SearchDialog {
     RecyclerView searchItemsRV;
 
     AppCompatButton closeButton;
+    TextView noDataFound;
 
 
     SearchItemsAdapter searchItemsAdapter;
@@ -102,6 +104,7 @@ public class SearchDialog {
         closeButton = dialog.findViewById(R.id.closeButton);
         searchText = dialog.findViewById(R.id.searchText);
         searchItemsRV = dialog.findViewById(R.id.searchItemRV);
+        noDataFound = dialog.findViewById(R.id.noDataFound);
         clearSearch = dialog.findViewById(R.id.clearSearchIcon);
         searchIcon = dialog.findViewById(R.id.searchIcon);
         searchDialogLayout = dialog.findViewById(R.id.searchDialogLayout);
@@ -220,14 +223,20 @@ public class SearchDialog {
 
                     for(int j = 0; j < searchItemsList.size();j++)
                     {
-                        if(searchItemsList.get(j).getName().toLowerCase(Locale.ROOT).contains(charSequence)){
+                        if(searchItemsList.get(j).getName().toLowerCase(Locale.ROOT).contains(charSequence.toString().toLowerCase(Locale.ROOT))){
                             filteredList.add(searchItemsList.get(j));
+
                         }
                     }
-
-                    if(filteredList.size() > 0){
-                        searchItemsAdapter.notifyDataSetChanged();
+                    if(filteredList.isEmpty()){
+                        noDataFound.setVisibility(View.VISIBLE);
+                        searchItemsRV.setVisibility(View.GONE);
+                    }else{
+                        noDataFound.setVisibility(View.GONE);
+                        searchItemsRV.setVisibility(View.VISIBLE);
                     }
+
+                    searchItemsAdapter.notifyDataSetChanged();
 
                     if(charSequence.length()>0){
                         clearSearch.setVisibility(View.VISIBLE);

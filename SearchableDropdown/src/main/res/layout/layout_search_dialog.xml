@@ -51,12 +51,26 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_items" />
 
+    <TextView
+        android:id="@+id/noDataFound"
+        android:layout_width="match_parent"
+        android:layout_height="320dp"
+        android:layout_below="@id/searchLayout"
+        android:text="No data found!"
+        android:gravity="center"
+        android:textSize="14dp"
+        android:visibility="gone"
+        android:letterSpacing="0.05"
+        android:textColor="@color/black"
+        android:textStyle="bold"/>
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/closeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
         android:text="Close"
         android:textAllCaps="false" />
 
