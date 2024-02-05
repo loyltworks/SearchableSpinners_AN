@@ -140,10 +140,19 @@ public class SearchableDropdown extends RelativeLayout {
 
     }
 
-    public void setSearchItemsList(ArrayList<SearchableDropdownModel> searchItemsList,ItemClickListener itemClickListener) {
+    public void setSearchItemsList(ArrayList<SearchableDropdownModel> searchItemsList,int alreadySelectedId,ItemClickListener itemClickListener) {
         this.searchItemsList = searchItemsList;
         this.itemClickListener = itemClickListener;
-        setSelection(0);
+        if(alreadySelectedId == 0){
+            setSelection(0);
+        }else{
+            for(int i=0;i<searchItemsList.size();i++){
+                if(searchItemsList.get(i).id == alreadySelectedId){
+                    setSelection(i);
+                }
+            }
+        }
+
     }
 
 
