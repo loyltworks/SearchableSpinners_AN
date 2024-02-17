@@ -18,6 +18,8 @@ public class SearchableDropdown extends RelativeLayout {
 
     ItemClickListener itemClickListener;
 
+    public static Boolean isDropdownEnabled = true;
+
 
     private ArrayList<SearchableDropdownModel> searchItemsList = new ArrayList<>();
 
@@ -51,18 +53,23 @@ public class SearchableDropdown extends RelativeLayout {
 
 
 
+        if(isDropdownEnabled){
+            searchableDropdown.setOnClickListener(view -> {
+
+                SearchDialog.getInstance().showDialog(context, selectedItem -> {
+                    selectedItemTextView.setText(selectedItem.getName());
+                    itemClickListener.onItemSelected(selectedItem);
+                });
+                SearchDialog.getInstance().setSearchItemsList(context,searchItemsList);
 
 
-        searchableDropdown.setOnClickListener(view -> {
-
-            SearchDialog.getInstance().showDialog(context, selectedItem -> {
-                selectedItemTextView.setText(selectedItem.getName());
-                itemClickListener.onItemSelected(selectedItem);
             });
-            SearchDialog.getInstance().setSearchItemsList(context,searchItemsList);
+        }else{
+            searchableDropdown.setOnClickListener(null);
+        }
 
 
-        });
+
 
         if(attrs != null){
             TypedArray typedArray = context.obtainStyledAttributes(attrs,R.styleable.SearchableDropdown,0,0);
