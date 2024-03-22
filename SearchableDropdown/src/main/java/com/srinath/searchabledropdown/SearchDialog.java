@@ -195,7 +195,7 @@ public class SearchDialog {
 
             searchItemsAdapter = new SearchItemsAdapter(context, filteredList, selectedItem -> {
                 itemClickListener.onItemSelected(selectedItem);
-                dialog.hide();
+                dialog.dismiss();
             });
 
             if(searchItemsRVTextColor != 0){
