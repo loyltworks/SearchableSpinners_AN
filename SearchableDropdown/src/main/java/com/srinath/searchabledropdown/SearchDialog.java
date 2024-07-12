@@ -115,7 +115,7 @@ public class SearchDialog {
 
         clearSearch.setOnClickListener(view -> {searchText.getText().clear();});
 
-        closeButton.setOnClickListener(view -> dialog.hide());
+        closeButton.setOnClickListener(view -> dialog.dismiss());
 
         if(searchDialogBackground != null){
             searchDialogLayout.setBackground(searchDialogBackground);
