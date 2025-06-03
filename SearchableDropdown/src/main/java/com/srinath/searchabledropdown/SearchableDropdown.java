@@ -55,7 +55,7 @@ public class SearchableDropdown extends RelativeLayout {
 
         if(isDropdownEnabled){
             searchableDropdown.setOnClickListener(view -> {
-
+                if(BlockMultipleClick.click())return;
                 SearchDialog.getInstance().showDialog(context, selectedItem -> {
                     selectedItemTextView.setText(selectedItem.getName());
                     itemClickListener.onItemSelected(selectedItem);
