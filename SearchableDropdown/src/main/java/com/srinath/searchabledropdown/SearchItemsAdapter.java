@@ -60,6 +60,7 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.
         holder.rowItem.setText(SearchItemsList.get(position).getName());
 
         holder.itemView.setOnClickListener(view -> {
+            if(BlockMultipleClick.INSTANCE.click())return;
             itemClickListener.onItemSelected(SearchItemsList.get(position));
         });
 
