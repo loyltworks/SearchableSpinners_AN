@@ -111,11 +111,15 @@ public class SearchDialog {
         searchLayout = dialog.findViewById(R.id.searchLayout);
 
 
+        clearSearch.setOnClickListener(view -> {
+            if(BlockMultipleClick.click())return;
+            searchText.getText().clear();});
 
+        closeButton.setOnClickListener(view ->{
+            if(BlockMultipleClick.click())return;
+            dialog.dismiss();
+        });
 
-        clearSearch.setOnClickListener(view -> {searchText.getText().clear();});
-
-        closeButton.setOnClickListener(view -> dialog.dismiss());
 
         if(searchDialogBackground != null){
             searchDialogLayout.setBackground(searchDialogBackground);
@@ -174,18 +178,6 @@ public class SearchDialog {
         if(searchItemsRVBackground != null){
             searchItemsRV.setBackground(searchItemsRVBackground);
         }
-
-
-
-
-
-
-
-
-
-
-
-
     }
 
     public  void setSearchItemsList(Context context, ArrayList<SearchableDropdownModel> searchItemsList){
@@ -207,8 +199,6 @@ public class SearchDialog {
 
 
             searchItemsRV.setAdapter(searchItemsAdapter);
-
-
 
             searchText.addTextChangedListener(new TextWatcher() {
                 @Override
@@ -251,15 +241,5 @@ public class SearchDialog {
                 }
             });
         }
-
     }
-
-
-
-
-
-
-
-
-
 }

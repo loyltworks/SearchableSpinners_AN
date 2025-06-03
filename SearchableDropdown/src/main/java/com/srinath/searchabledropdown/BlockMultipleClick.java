@@ -2,6 +2,7 @@ package com.srinath.searchabledropdown;
 
 import android.os.SystemClock;
 
+//by barath
 public class BlockMultipleClick {
     private static long mLastClickTime = 0;
 
