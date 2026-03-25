@@ -1,12 +1,14 @@
 package com.srinath.searchabledropdown;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.ViewHolder> {
     Context context;
     ArrayList<SearchableDropdownModel> SearchItemsList;
+    private Typeface cachedTypeface = null;
 
     int rowItemTextColor = 0;
     int rowItemTextSize = 0;
@@ -21,10 +24,16 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.
 
     public ItemClickListener itemClickListener;
 
-    public SearchItemsAdapter(Context context, ArrayList<SearchableDropdownModel> SearchItemsList, ItemClickListener itemClickListener){
+    public SearchItemsAdapter(Context context, ArrayList<SearchableDropdownModel> SearchItemsList, ItemClickListener itemClickListener) {
         this.context = context;
         this.SearchItemsList = SearchItemsList;
         this.itemClickListener = itemClickListener;
+    }
+
+    public void setRowItemFont(Context context, int fontResId) {
+        if (fontResId != 0) {
+            cachedTypeface = ResourcesCompat.getFont(context, fontResId);
+        }
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
@@ -55,7 +64,9 @@ public class SearchItemsAdapter extends RecyclerView.Adapter<SearchItemsAdapter.
             holder.rowItem.setTextSize(rowItemTextSize);
         }
 
-
+        if (cachedTypeface != null) {
+            holder.rowItem.setTypeface(cachedTypeface);
+        }
 
         holder.rowItem.setText(SearchItemsList.get(position).getName());
 

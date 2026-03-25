@@ -2,10 +2,12 @@ package com.srinath.searchabledropdown;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import androidx.core.content.res.ResourcesCompat;
 
 import java.util.ArrayList;
 
@@ -87,6 +89,15 @@ public class SearchableDropdown extends RelativeLayout {
                 selectedItemTextView.setTextColor(typedArray.getColor(R.styleable.SearchableDropdown_Dropdown_TextColor,0));
 
             }
+
+            int dropdownFontResId = typedArray.getResourceId(R.styleable.SearchableDropdown_Dropdown_FontFamily, 0);
+            if (dropdownFontResId != 0) {
+                Typeface typeface = ResourcesCompat.getFont(context, dropdownFontResId);
+                if (typeface != null) {
+                    selectedItemTextView.setTypeface(typeface);
+                }
+            }
+
             if(typedArray.getResourceId(R.styleable.SearchableDropdown_Dropdown_Icon,0)!=0){
                 searchableDropdownIcon.setImageResource(typedArray.getResourceId(R.styleable.SearchableDropdown_Dropdown_Icon,0));
                 searchableDropdownIcon.requestLayout();
@@ -118,6 +129,8 @@ public class SearchableDropdown extends RelativeLayout {
 
             SearchDialog.getInstance().searchtextsize = typedArray.getInt(R.styleable.SearchableDropdown_SearchLayout_TextSize,0);
             SearchDialog.getInstance().searchtextColor = typedArray.getColor(R.styleable.SearchableDropdown_SearchLayout_TextColor,0);
+            SearchDialog.getInstance().searchTextFontResId = typedArray.getResourceId(R.styleable.SearchableDropdown_SearchLayout_FontFamily, 0);
+
 
             SearchDialog.getInstance().searchIconDrawable = typedArray.getResourceId(R.styleable.SearchableDropdown_SearchLayout_Icon,0);
             SearchDialog.getInstance().searchIconHeight = typedArray.getInt(R.styleable.SearchableDropdown_SearchLayout_IconHeight,0);
@@ -132,10 +145,13 @@ public class SearchableDropdown extends RelativeLayout {
             SearchDialog.getInstance().closeButtonBackground = typedArray.getDrawable(R.styleable.SearchableDropdown_CloseButton_background);
             SearchDialog.getInstance().closeButtonTextColor = typedArray.getColor(R.styleable.SearchableDropdown_CloseButton_TextColor,0);
             SearchDialog.getInstance().closeButtonTextSize = typedArray.getInt(R.styleable.SearchableDropdown_CloseButton_TextSize,0);
+            SearchDialog.getInstance().closeButtonFontResId = typedArray.getResourceId(R.styleable.SearchableDropdown_CloseButton_FontFamily, 0);
+
 
             SearchDialog.getInstance().searchItemsRVBackground = typedArray.getDrawable(R.styleable.SearchableDropdown_SearchList_background);
             SearchDialog.getInstance().searchItemsRVTextColor = typedArray.getColor(R.styleable.SearchableDropdown_SearchList_TextColor,0);
             SearchDialog.getInstance().searchItemsRVTextSize = typedArray.getInt(R.styleable.SearchableDropdown_SearchList_TextSize,0);
+            SearchDialog.getInstance().searchItemsFontResId = typedArray.getResourceId(R.styleable.SearchableDropdown_SearchList_FontFamily, 0);
 
             typedArray.recycle();
         }

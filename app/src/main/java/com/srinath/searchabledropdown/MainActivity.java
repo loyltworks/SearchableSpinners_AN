@@ -3,6 +3,7 @@ package com.srinath.searchabledropdown;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import com.srinath.searchabledropdown.app.R;
 
 public class MainActivity extends AppCompatActivity {
 

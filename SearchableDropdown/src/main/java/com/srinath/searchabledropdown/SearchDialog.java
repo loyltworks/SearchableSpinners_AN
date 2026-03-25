@@ -3,6 +3,7 @@ package com.srinath.searchabledropdown;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.text.Editable;
@@ -17,6 +18,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.AppCompatButton;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -63,6 +65,7 @@ public class SearchDialog {
 
     int searchtextsize = 0;
     int searchtextColor = 0;
+    int searchTextFontResId = 0;
 
     int searchIconDrawable = 0;
     int searchIconHeight = 0;
@@ -80,11 +83,15 @@ public class SearchDialog {
 
     int closeButtonTextSize = 0;
 
+    int closeButtonFontResId = 0;
+
     Drawable searchItemsRVBackground;
 
     int searchItemsRVTextColor = 0;
 
     int searchItemsRVTextSize = 0;
+
+    int searchItemsFontResId = 0;
 
     public void showDialog(Context context,ItemClickListener itemClickListener){
 
@@ -134,6 +141,14 @@ public class SearchDialog {
         if(searchtextColor != 0){
             searchText.setTextColor(searchtextColor);
         }
+
+        if (searchTextFontResId != 0) {
+            Typeface typeface = ResourcesCompat.getFont(context, searchTextFontResId);
+            if (typeface != null) {
+                searchText.setTypeface(typeface);
+            }
+        }
+
         if(searchIconDrawable != 0){
             searchIcon.setImageResource(searchIconDrawable);
         }
@@ -175,6 +190,19 @@ public class SearchDialog {
             closeButton.setTextSize(closeButtonTextSize);
 
         }
+        if (closeButtonFontResId != 0) {
+            Typeface typeface = ResourcesCompat.getFont(context, closeButtonFontResId);
+            if (typeface != null) {
+                closeButton.setTypeface(typeface);
+            }
+        }
+
+        if (searchItemsFontResId != 0) {
+            Typeface typeface = ResourcesCompat.getFont(context, searchItemsFontResId);
+            if (typeface != null) {
+                noDataFound.setTypeface(typeface);
+            }
+        }
         if(searchItemsRVBackground != null){
             searchItemsRV.setBackground(searchItemsRVBackground);
         }
@@ -196,6 +224,7 @@ public class SearchDialog {
             } if(searchItemsRVTextSize != 0){
                 searchItemsAdapter.rowItemTextSize = searchItemsRVTextSize;
             }
+            searchItemsAdapter.setRowItemFont(context, searchItemsFontResId);
 
 
             searchItemsRV.setAdapter(searchItemsAdapter);
