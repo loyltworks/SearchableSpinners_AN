@@ -8,6 +8,7 @@
         <attr name="Dropdown_background" format="reference"/>
         <attr name="Dropdown_TextColor" format="color"/>
         <attr name="Dropdown_TextSize" format="integer"/>
+        <attr name="Dropdown_FontFamily" format="reference"/>
         <attr name="Dropdown_Icon" format="reference"/>
         <attr name="Dropdown_IconHeight" format="integer"/>
         <attr name="Dropdown_IconWidth" format="integer"/>
@@ -17,6 +18,7 @@
         <attr name="SearchLayout_background" format="reference"/>
         <attr name="SearchLayout_TextColor" format="color"/>
         <attr name="SearchLayout_TextSize" format="integer"/>
+        <attr name="SearchLayout_FontFamily" format="reference"/>
         <attr name="SearchLayout_Icon" format="reference"/>
         <attr name="SearchLayout_IconHeight" format="integer"/>
         <attr name="SearchLayout_IconWidth" format="integer"/>
@@ -30,11 +32,13 @@
         <attr name="SearchList_background" format="reference"/>
         <attr name="SearchList_TextColor" format="color"/>
         <attr name="SearchList_TextSize" format="integer"/>
+        <attr name="SearchList_FontFamily" format="reference"/>
 
         <!--Closebutton attributes-->
         <attr name="CloseButton_background" format="reference"/>
         <attr name="CloseButton_TextColor" format="color"/>
         <attr name="CloseButton_TextSize" format="integer"/>
+        <attr name="CloseButton_FontFamily" format="reference"/>
 
 
     </declare-styleable>
